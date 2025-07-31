@@ -55,13 +55,7 @@ const MapView = ({ jobs, setSelectedJob }) => {
             (job) => job.latitude !== undefined && job.longitude !== undefined
           )
           .map((job, index) => (
-            <Marker
-              key={index}
-              position={[job.latitude, job.longitude]}
-              eventHandlers={{
-                click: () => setSelectedJob(job),
-              }}
-            >
+            <Marker key={index} position={[job.latitude, job.longitude]}>
               <Popup>
                 <div>
                   <h3 className="font-semibold">{job.jobTitle}</h3>
@@ -69,9 +63,12 @@ const MapView = ({ jobs, setSelectedJob }) => {
                     {job.companyName || "Unknown Company"}
                   </p>
                   <p>{job.description}</p>
-                  <a href={job.redirectUrl} target="_blank">
-                    Apply
-                  </a>
+                  <button
+                    onClick={() => setSelectedJob(job)}
+                    className="mt-2 text-blue-600 underline cursor-pointer"
+                  >
+                    See More
+                  </button>
                 </div>
               </Popup>
             </Marker>

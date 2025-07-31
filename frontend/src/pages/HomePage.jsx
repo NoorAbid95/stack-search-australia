@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SearchForm from "../components/SearchForm";
 import MapView from "../components/MapView";
 import { api } from "../utils/axios.js";
+import JobDetailModal from "../components/JobDetailModal.jsx";
 
 const HomePage = () => {
   const [jobs, setJobs] = useState([]);
@@ -42,10 +43,15 @@ const HomePage = () => {
         <>
           <MapView
             jobs={jobs}
-            selectedJob={selectedJob}
             setSelectedJob={setSelectedJob}
             selectedState={state}
           />
+          {selectedJob && (
+            <JobDetailModal
+              job={selectedJob}
+              onClose={() => setSelectedJob(null)}
+            />
+          )}
         </>
       )}
     </main>
