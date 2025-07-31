@@ -13,7 +13,8 @@ export const adzunaJobSearch = async (userKeyword, userState) => {
           app_key,
           what: "software engineer",
           what_and: userKeyword,
-          where: userState || "Australia",
+          where: userState,
+          results_per_page: 30,
         },
       }
     );
