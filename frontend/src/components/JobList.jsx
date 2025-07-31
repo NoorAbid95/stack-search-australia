@@ -2,7 +2,7 @@ import React from "react";
 import JobCard from "./JobCard";
 
 const JobList = ({ jobs }) => {
-  if (!jobs.length) {
+  if (!Array.isArray(jobs) || jobs.length === 0) {
     return <p className="text-center text-gray-500">No jobs found.</p>;
   }
 

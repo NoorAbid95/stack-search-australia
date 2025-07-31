@@ -19,6 +19,8 @@ export const jobSearch = async (req, res) => {
           ? `$${job.salary_min.toLocaleString()} - $${job.salary_max.toLocaleString()}`
           : "Not specified",
       redirectUrl: job.redirect_url,
+      latitude: job.latitude,
+      longitude: job.longitude,
     }));
 
     res.status(200).json(formattedJobs);

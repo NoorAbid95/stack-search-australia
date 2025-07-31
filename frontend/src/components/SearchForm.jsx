@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 
 const STATES = [
   "New South Wales",
@@ -12,10 +11,13 @@ const STATES = [
   "Australian Capital Territory",
 ];
 
-const SearchForm = ({ onSearch }) => {
-  const [keyword, setKeyword] = useState("");
-  const [state, setState] = useState("Australia");
-
+const SearchForm = ({
+  keyword,
+  state,
+  onKeywordChange,
+  onStateChange,
+  onSearch,
+}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSearch(keyword, state);
@@ -30,14 +32,15 @@ const SearchForm = ({ onSearch }) => {
         type="text"
         placeholder="Enter a keyword (e.g. React, Python)"
         value={keyword}
-        onChange={(e) => setKeyword(e.target.value)}
+        onChange={(e) => onKeywordChange(e.target.value)}
         className="flex-1 p-2 border rounded"
       />
       <select
         value={state}
-        onChange={(e) => setState(e.target.value)}
+        onChange={(e) => onStateChange(e.target.value)}
         className="p-2 border rounded"
       >
+        <option value="Australia">Australia</option>
         {STATES.map((stateName) => (
           <option key={stateName} value={stateName}>
             {stateName}
