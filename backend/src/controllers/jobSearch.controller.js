@@ -4,7 +4,10 @@ export const jobSearch = async (req, res) => {
   const { keyword, state } = req.query;
   try {
     const results = await adzunaJobSearch(keyword, state);
-
+    const contractMap = {
+      full_time: "Full Time",
+      part_time: "Part Time",
+    };
     if (!results || results.length === 0) {
       return res.status(404).json({ message: "No jobs found." });
     }
@@ -18,6 +21,7 @@ export const jobSearch = async (req, res) => {
         job.salary_min && job.salary_max
           ? `$${job.salary_min.toLocaleString()} - $${job.salary_max.toLocaleString()}`
           : "Not specified",
+      contract: contractMap[job.contract_time] || "Not specified",
       redirectUrl: job.redirect_url,
       latitude: job.latitude,
       longitude: job.longitude,
