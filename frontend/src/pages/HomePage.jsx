@@ -4,6 +4,7 @@ import MapView from "../components/MapView";
 import { api } from "../utils/axios.js";
 import JobDetailModal from "../components/JobDetailModal.jsx";
 import { TypeAnimation } from "react-type-animation";
+import stackSearchLogo from "../assets/stackSearchLogo.jpg";
 
 const HomePage = () => {
   const [jobs, setJobs] = useState([]);
@@ -31,18 +32,28 @@ const HomePage = () => {
 
   return (
     <>
+      <nav className="w-full mb-10">
+        <div className="flex items-center p-6 ml-4">
+          <img
+            src={stackSearchLogo}
+            alt="Stack Search Logo"
+            className="h-12 w-auto"
+          />
+        </div>
+      </nav>
+
       <main className="min-h-screen space-y-8 flex justify-center items-center w-full ">
         <div className="flex flex-col w-full items-center">
           <div>
             <TypeAnimation
               sequence={[
-                "Helping Australians land their next Software Engineering role",
+                "Helping Australians land their next Software Engineering role.",
                 2000,
               ]}
               wrapper="p"
               speed={60}
               repeat={Infinity}
-              className="font-semibold text-3xl"
+              className="font-semibold text-3xl text-[#3C2A15]"
             />
           </div>
           <div className="flex flex-col w-full items-center mt-20">
