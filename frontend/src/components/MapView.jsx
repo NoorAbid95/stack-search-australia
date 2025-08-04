@@ -35,7 +35,7 @@ const MapView = ({ jobs, setSelectedJob }) => {
             center={[-25.2744, 133.7751]} // Default Australia center
             zoom={4.5}
             minZoom={4}
-            maxZoom={10}
+            maxZoom={40}
             scrollWheelZoom={true}
             maxBounds={[
               [-60, 95], // Further southwest (south and west)
