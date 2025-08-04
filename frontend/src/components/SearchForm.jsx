@@ -39,6 +39,8 @@ const SearchForm = ({
             type="text"
             placeholder="e.g. React, Python"
             value={keyword}
+            required
+            autoComplete="off"
             onChange={(e) => onKeywordChange(e.target.value)}
             className="p-2 border  rounded w-full  text-[#3C2A15] focus:outline-none"
           />

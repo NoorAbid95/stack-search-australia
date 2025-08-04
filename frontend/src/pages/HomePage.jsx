@@ -4,7 +4,9 @@ import MapView from "../components/MapView";
 import { api } from "../utils/axios.js";
 import JobDetailModal from "../components/JobDetailModal.jsx";
 import { TypeAnimation } from "react-type-animation";
-import stackSearchLogo from "../assets/stackSearchLogo.jpg";
+
+import LoadingAnimation from "../components/LoadingAnimation.jsx";
+import Navbar from "../components/Navbar.jsx";
 
 const HomePage = () => {
   const [jobs, setJobs] = useState([]);
@@ -32,15 +34,7 @@ const HomePage = () => {
 
   return (
     <>
-      <nav className="w-full mb-10">
-        <div className="flex items-center p-6 ml-4">
-          <img
-            src={stackSearchLogo}
-            alt="Stack Search Logo"
-            className="h-12 w-auto"
-          />
-        </div>
-      </nav>
+      <Navbar />
 
       <main className="min-h-screen space-y-8 flex justify-center items-center w-full ">
         <div className="flex flex-col w-full items-center">
@@ -64,24 +58,26 @@ const HomePage = () => {
               onStateChange={setState}
               onSearch={handleSearch}
             />
-
-            {loading ? (
-              <p className="text-center">Loading jobs...</p>
-            ) : (
-              <>
-                <MapView
-                  jobs={jobs}
-                  setSelectedJob={setSelectedJob}
-                  selectedState={state}
+            <div className="relative w-full">
+              <MapView
+                jobs={jobs}
+                setSelectedJob={setSelectedJob}
+                selectedState={state}
+              />
+              {loading && (
+                <div className="absolute inset-0 flex items-center justify-center w-full z-10">
+                  <div className="flex justify-center items-center w-215 h-160 bg-white/50 rounded-lg">
+                    <LoadingAnimation />
+                  </div>
+                </div>
+              )}
+              {selectedJob && (
+                <JobDetailModal
+                  job={selectedJob}
+                  onClose={() => setSelectedJob(null)}
                 />
-                {selectedJob && (
-                  <JobDetailModal
-                    job={selectedJob}
-                    onClose={() => setSelectedJob(null)}
-                  />
-                )}
-              </>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </main>
