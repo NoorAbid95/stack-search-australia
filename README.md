@@ -10,13 +10,13 @@ Check out the live application here: [https://stack-search-australia.onrender.co
 ## Features
 
 - **Job Search:** Users can search for jobs by entering keywords and selecting a state.
-- **Map View:** Visual representation of job locations across Australia using Mapbox.
+- **Map View:** Visual representation of job locations across Australia using React-Leaflet.
 - **Job Details:** Clicking on a job pin on the map displays detailed job information in a modal.
 - **Save Favorites:** Users can save job listings as favorites for later viewing.
 
 ## Technologies Used
 
-- **Frontend:** React.js, Vite, Mapbox for maps integration.
+- **Frontend:** React.js, Vite, Leaflet for maps integration.
 - **Backend:** Node.js, Express.js for serving API requests.
 - **API:** Adzuna API for fetching job listings.
 - **Styling:** Tailwind CSS for UI components.
@@ -49,7 +49,6 @@ npm run dev
 ```
 
 ### Acknowledgements
-- Mapbox: For providing the mapping platform used in this application.
 - Adzuna: For providing the job search API used to fetch job listings.
 
 ### Author
